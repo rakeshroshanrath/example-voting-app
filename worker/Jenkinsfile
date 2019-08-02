@@ -1,0 +1,44 @@
+pipeline{
+    
+    agent any
+    
+    tools{
+        
+        maven 'Maven 3.6.1'
+    }
+    stages{
+        
+        stage(Build){
+            
+            steps{
+                
+                echo "Building Worker App"
+                dir('worker'){
+                sh 'mvn compile'
+                sleep 3
+                }
+            }
+        }
+        stage(two){
+            
+            steps{
+                
+                echo "Hello World!!2"
+            }
+        }
+        stage(three){
+            
+            steps{
+                
+                echo "Hello World!!3"
+            }
+        }
+        
+        
+    }
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+    }
+}
